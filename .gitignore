@@ -1,3 +1,6 @@
+# .envrc
+**/.envrc
+
 # IPython Notebook
 .ipynb_checkpoints
 
@@ -10,3 +13,5 @@
 # large file
 usr/local/
 
+# mnt
+mnt/

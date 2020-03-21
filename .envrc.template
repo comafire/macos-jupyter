@@ -29,6 +29,6 @@ export SPARK_LOCAL_IP="127.0.0.1"
 
 # Jupyter
 export JUPYTER_PORT="7010" # Your Jupyter Port
-export JUPYTER_PASSWORD="DSshxmqnr1!" # Your Jupyter Password
+export JUPYTER_PASSWORD="notebooks" # Your Jupyter Password
 export JUPYTER_BASEURL="jupyter" # Your Jupyter BaseURL, ex) http://localhost:8010/jupyter
 

@@ -47,9 +47,10 @@ Git Manual
 > echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc 
 ```
 
-pyenv를 이용해 파이썬 여러 버전을 설치합니다. 주로 사용하는 2.x 대와 3.x 대의 최신 버전을 설치해 봅니다. 2.x 의 지원종료가 다가오기에 3.x 사용을 추천합니다. apache spark 과의 호완성을 위해 여기서는 3.7.6 버전을 사용합니다. (https://stackoverflow.com/questions/58700384/how-to-fix-typeerror-an-integer-is-required-got-type-bytes-error-when-tryin)
+pyenv를 이용해 파이썬 여러 버전을 설치합니다. 파이썬 빌드시 필요한 의존성 패키지와 주로 사용하는 2.x 대와 3.x 대의 최신 버전을 설치해 봅니다. 2.x 의 지원종료가 다가오기에 3.x 사용을 추천합니다. apache spark 과의 호완성을 위해 여기서는 3.7.6 버전을 사용합니다. (https://stackoverflow.com/questions/58700384/how-to-fix-typeerror-an-integer-is-required-got-type-bytes-error-when-tryin)
 
 ```bash
+> brew install gdbm
 > pyenv install 2.7.16
 > pyenv install 3.7.6
 > pyenv versions
@@ -107,35 +108,35 @@ macOS 에서 Spark 을 설치하여 사용하는 방법은 여러가지가 있�
 > git clone https://github.com/comafire/macos-jupyter.git
 ```
 
-Spark 을 위한 소스를 다운받아 프로젝트 내부의 usr/local 디렉토리내에 압축을 풀어 줍니다.
+Spark 실행을 의한 의존성 패키지들을 설치 및 다운받아 프로젝트 내부의 usr/local 디렉토리내에 압축을 풀어 줍니다.
 
-* openjdk-13.0.2_osx-x64_bin.tar.gz 
-* scala-2.12.10.tgz
-* spark-2.4.5-bin-hadoop2.7.tgz
+* openjdk-8: brew 로 설치 (Spark은 JDK8에 의존성 존재)
+* scala-2.12.10.tgz: 다운로드
+* spark-2.4.5-bin-hadoop2.7.tgz: 다운로드
 
 ```bash
+> brew tap AdoptOpenJDK/openjdk
+> brew cask install adoptopenjdk8
 > mkdir -p usr/local
-> wget https://download.java.net/java/GA/jdk13.0.2/d4173c853231432d94f001e99d882ca7/8/GPL/openjdk-13.0.2_osx-x64_bin.tar.gz
 > wget https://downloads.lightbend.com/scala/2.12.10/scala-2.12.10.tgz
 > wget http://mirror.navercorp.com/apache/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
-> tar -zxvf openjdk-13.0.2_osx-x64_bin.tar.gz
 > tar -zvxf scala-2.12.10.tgz
 > tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz
-> ln -s jdk-13.0.2.jdk openjdk
 > ln -s scala-2.12.10 scala
 > ln -s spark-2.4.5-bin-hadoop2.7 spark
 ```
 
-macos-jupyter 내부 디렉토리 안에 미리 .envrc 안에 기본 설정이 되어 있으며, 추가적으로 필요한 부분은 수정해서 사용할 수 있습니다.
+macos-jupyter 내부 디렉토리 안에 미리 .envrc.template 안에 기본 설정이 되어 있으며, 이를 복사하여 추가적으로 필요한 부분은 수정해서 사용할 수 있습니다.
 
 ```bash
+> cp .envrc.template .envrc
 > vi .envrc
 
 # BASE
 export MACOS_JUPYTER=$PWD
 
 # Java
-export JAVA_HOME="$MACOS_JUPYTER/usr/local/openjdk/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 export CPPFLAGS="-I$JAVA_HOME/include"
 
