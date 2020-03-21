@@ -117,7 +117,8 @@ Spark 실행을 의한 의존성 패키지들을 설치 및 다운받아 프로�
 ```bash
 > brew tap AdoptOpenJDK/openjdk
 > brew cask install adoptopenjdk8
-> mkdir -p usr/local
+> mkdir -p usr
+> cd usr
 > wget https://downloads.lightbend.com/scala/2.12.10/scala-2.12.10.tgz
 > wget http://mirror.navercorp.com/apache/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
 > tar -zvxf scala-2.12.10.tgz
@@ -141,7 +142,7 @@ export PATH="$JAVA_HOME/bin:$PATH"
 export CPPFLAGS="-I$JAVA_HOME/include"
 
 # Scala
-export SCALA_HOME="$MACOS_JUPYTER/usr/local/scala"
+export SCALA_HOME="$MACOS_JUPYTER/usr/scala"
 export PATH="$SCALA_HOME/bin:$PATH"
 
 # Python
@@ -152,7 +153,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 pyenv activate macos-jupyter
 
 # Spark 
-export SPARK_HOME="$MACOS_JUPYTER/usr/local/spark"
+export SPARK_HOME="$MACOS_JUPYTER/usr/spark"
 export PYSPARK_PYTHON="$(which python3)"
 export PYSPARK_DRIVER_PYTHON="$PYSPARK_PYTHON"
 export PY4J_VERSION=0.10.7
