@@ -7,7 +7,7 @@ export PATH="$JAVA_HOME/bin:$PATH"
 export CPPFLAGS="-I$JAVA_HOME/include"
 
 # Scala
-export SCALA_HOME="$MACOS_JUPYTER/usr/local/scala"
+export SCALA_HOME="$MACOS_JUPYTER/usr/scala"
 export PATH="$SCALA_HOME/bin:$PATH"
 
 # Python
@@ -18,7 +18,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 pyenv activate macos-jupyter
 
 # Spark 
-export SPARK_HOME="$MACOS_JUPYTER/usr/local/spark"
+export SPARK_HOME="$MACOS_JUPYTER/usr/spark"
 export PYSPARK_PYTHON="$(which python3)"
 export PYSPARK_DRIVER_PYTHON="$PYSPARK_PYTHON"
 export PY4J_VERSION=0.10.7
