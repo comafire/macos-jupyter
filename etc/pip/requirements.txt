@@ -22,7 +22,7 @@ seaborn==0.10.0
 
 nikola[extras]==8.0.4
 
-jupyterlab==2.0.0
+jupyterlab==2.2.10
 spylon-kernel==0.4.1
 
 firebase_admin
